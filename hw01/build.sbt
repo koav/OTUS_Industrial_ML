@@ -1,5 +1,5 @@
 name := "hw01"
-
+logLevel := Level.Errors
 version := "0.1"
 
 scalaVersion := "2.13.5"
@@ -16,5 +16,6 @@ libraryDependencies  ++= Seq(
   // It depends on LGPL code.
   "org.scalanlp" %% "breeze-viz" % "1.1",
   // tototoshi scala-csv reader
-  "com.github.tototoshi" %% "scala-csv" % "1.3.7"
+  "com.github.tototoshi" %% "scala-csv" % "1.3.7",
+  "com.github.fommil.netlib"
 )

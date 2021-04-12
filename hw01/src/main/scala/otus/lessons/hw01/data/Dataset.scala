@@ -1,11 +1,9 @@
-package otus.lessons.hw01.business
+package otus.lessons.hw01.data
 
+import breeze.linalg._
 import com.github.tototoshi.csv._
 
 import java.io._
-import breeze.linalg._
-import otus.lessons.hw01.Main.d
-
 import scala.util.Random
 
 /*
@@ -38,7 +36,7 @@ class Dataset extends IDataset{
   /*
   * Split the set into a training set and a test set with ratio
   * */
-  override def split(data: List[List[Double]], ratio: Double = 0.8, seed: Int = 42): (List[List[Double]], List[List[Double]]) = {
+  override def split(data: List[List[Double]], ratio: Double = 0.8, seed: Int = 1): (List[List[Double]], List[List[Double]]) = {
 
     require(!data.isEmpty, message = "The set cannot be empty")
 
@@ -62,6 +60,7 @@ class Dataset extends IDataset{
 
     (features, target)
   }
+
 }
 
 trait IDataset{

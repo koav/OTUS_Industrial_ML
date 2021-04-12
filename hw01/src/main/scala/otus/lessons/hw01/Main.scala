@@ -1,6 +1,5 @@
 package otus.lessons.hw01
 
-import otus.lessons.hw01.business.{Dataset, LinearRegression, Regressor, RegressorType}
 import com.github.tototoshi.csv._
 
 import java.io._
@@ -8,7 +7,9 @@ import java.util.NoSuchElementException
 import breeze.linalg._
 import breeze.numerics._
 import breeze.stats.regression._
-import otus.lessons.hw01.business.RegressorType.RegressorType
+import otus.lessons.hw01.data.Dataset
+import otus.lessons.hw01.math.BreezAlgorithm.BreezAlgorithm
+import otus.lessons.hw01.math._
 
 import scala.io.Source
 
@@ -51,12 +52,24 @@ object Main extends App {
 
   println("\n04. Linear regression\n")
 
+  val scorer = new Scorer()
+
+  println("\n- Custom regression")
   val model = new LinearRegression()
       model.fit(train_X, train_y)
+  println("RMSE: " + scorer.Evaluate(model.predict(test_X), test_y, ScoreType.RMSE))
+  println(" MSE: " + scorer.Evaluate(model.predict(test_X), test_y, ScoreType.MSE))
 
-  //val predict = model.predict(test_X)
+  println("\n- Breez simple regression")
+  var breez = new BreezRegression()
+      breez.fit(train_X, train_y, BreezAlgorithm.SimpleRegression)
+  println("RMSE: " + scorer.Evaluate(breez.predict(test_X), test_y, ScoreType.RMSE))
+  println(" MSE: " + scorer.Evaluate(breez.predict(test_X), test_y, ScoreType.MSE))
 
-  //println(predict.length)
+  println("\n- Breez lasso regression")
+  breez.fit(train_X, train_y, BreezAlgorithm.Lasso)
+  println("RMSE: " + scorer.Evaluate(breez.predict(test_X), test_y, ScoreType.RMSE))
+  println(" MSE: " + scorer.Evaluate(breez.predict(test_X), test_y, ScoreType.MSE))
 
   println("\n== Regression demo completed == ")
 }

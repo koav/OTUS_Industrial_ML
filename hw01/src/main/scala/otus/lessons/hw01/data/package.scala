@@ -1,6 +1,6 @@
 package otus.lessons.hw01
 
-package object business {
+package object data {
 
   class StringEx(val input: String) extends AnyVal {
 
@@ -12,5 +12,4 @@ package object business {
   }
 
   implicit def isNullOrEmpty(input: String): StringEx = new StringEx(input)
-
 }

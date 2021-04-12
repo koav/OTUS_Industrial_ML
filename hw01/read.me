@@ -1,0 +1,39 @@
+== Regression demo started == 
+
+01. Load dataset file
+
+       file: E:\OTUS_Industrial_ML\hw01\src\main\datasets\Dataset.csv
+    records: 40949
+ first line: List(634995.0, 0.0, 463.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 65.0, 166.0, 2.0, 24.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
+  last line: List(7170111.0, 70.0, 497000.0, 9.0, 975.0, 263.0, 712.0, 960.0, -449.0, 29.0, 133.0, 3732.0, 9.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 11.0)
+       Note: The last column is the target
+
+02. Split dataset into a train/test
+
+      ratio: 0.8
+      train: 32759
+       test: 8190
+
+03. Split datasets into a features/target
+
+      train_X: 27 x 32759
+      train_y: 1 x 32759
+      test_X: 27 x 8190
+      test_y: 1 x 8190
+
+04. Linear regression
+
+
+- Custom regression
+RMSE: 28.153303393613733
+ MSE: 792.6084919728625
+
+- Breez simple regression
+RMSE: 28.153987979717574
+ MSE: 792.6470391620816
+
+- Breez lasso regression
+RMSE: 28.273952720297068
+ MSE: 799.416402429594
+
+== Regression demo completed == 
