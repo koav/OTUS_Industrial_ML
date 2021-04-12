@@ -58,16 +58,19 @@ class Dataset extends IDataset{
     DenseMatrix(data.map(x=> x.toArray):_*)
   }
 
+  /*
   override def getFeaturesAndTarget(data: List[List[Double]]): (DenseMatrix[Double], DenseMatrix[Double]) = {
     val matrix = DenseMatrix(data.map(x=> x.toArray):_*)
 
     DenseVector.zeros[Double](matrix(::,0).length)
   }
+
+   */
 }
 
 trait IDataset{
   def read(pathToFile: String): List[List[Double]]
   def split(data: List[List[Double]], ratio: Double, seed: Int): (List[List[Double]], List[List[Double]])
   def convert(data: List[List[Double]]): DenseMatrix[Double]
-  def getFeaturesAndTarget(data: List[List[Double]]): (DenseMatrix[Double], DenseMatrix[Double])
+  //def getFeaturesAndTarget(data: List[List[Double]]): (DenseMatrix[Double], DenseMatrix[Double])
 }

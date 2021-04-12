@@ -12,7 +12,7 @@ import otus.lessons.hw01.business.RegressorType.{Breez, RegressorType}
 import scala.io.Source
 
 class Regressor {
-
+/*
   def Train(regressorType: RegressorType, data_X: DenseVector[Double], data_y: DenseVector[Double])
   : DenseMatrix[Double] = {
 
@@ -31,6 +31,8 @@ class Regressor {
   : DenseMatrix[Double] = {
 
   }
+  
+ */
 }
 
 object RegressorType extends Enumeration {
