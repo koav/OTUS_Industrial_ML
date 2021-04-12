@@ -2,7 +2,7 @@ package otus.lessons.hw01.business
 
 
 class LinearRegression {
-
+/*
   def fit(train_features, train_target): Unit {
 
     X = np.concatenate((np.ones((train_features.shape[0], 1)), train_features), axis=1)
@@ -16,6 +16,6 @@ class LinearRegression {
   def predict(test_features): Unit = {
     test_features.dot(self.w) + self.w0
   }
-
+*/
 }
 
