@@ -20,8 +20,8 @@ object Main extends App {
 
   println("\n01. Load dataset file\n")
 
-  //val file = getClass.getClassLoader.getResource("Dataset.csv").getPath
-  val file = "E:\\OTUS_Industrial_ML\\hw01\\src\\main\\datasets\\Dataset.csv"
+  val file = getClass.getClassLoader.getResource("Dataset.csv").getPath
+  //val file = "E:\\OTUS_Industrial_ML\\hw01\\src\\main\\datasets\\Dataset.csv"
   val ds = new Dataset()
   val d = ds.read(file)
 
@@ -71,5 +71,5 @@ object Main extends App {
   println("RMSE: " + scorer.Evaluate(breez.predict(test_X), test_y, ScoreType.RMSE))
   println(" MSE: " + scorer.Evaluate(breez.predict(test_X), test_y, ScoreType.MSE))
 
-  println("\n== Regression demo completed == ")
+  println("\n== Regression demo completed == \n")
 }
