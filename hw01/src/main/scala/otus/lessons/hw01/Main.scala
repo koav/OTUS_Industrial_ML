@@ -1,6 +1,6 @@
 package otus.lessons.hw01
 
-import otus.lessons.hw01.business.{Dataset, Regressor, RegressorType}
+import otus.lessons.hw01.business.{Dataset, LinearRegression, Regressor, RegressorType}
 import com.github.tototoshi.csv._
 
 import java.io._
@@ -19,7 +19,8 @@ object Main extends App {
 
   println("\n01. Load dataset file\n")
 
-  val file = getClass.getClassLoader.getResource("Dataset.csv").getPath
+  //val file = getClass.getClassLoader.getResource("Dataset.csv").getPath
+  val file = "E:\\OTUS_Industrial_ML\\hw01\\src\\main\\datasets\\Dataset.csv"
   val ds = new Dataset()
   val d = ds.read(file)
 
@@ -32,14 +33,30 @@ object Main extends App {
 
   println("\n02. Split dataset into a train/test\n")
 
-  val sets = ds.split(d)
-  val train = ds.convert(sets._1)
-  val test = ds.convert(sets._2)
+  val (train, test) = ds.split(d)
 
-  println("      train: " + train.rows + " x " + train.cols)
-  println("       test: "  + test.rows + " x " + test.cols)
+  println("      ratio: 0.8")
+  println("      train: " + train.size)
+  println("       test: "  + test.size)
 
-  println("\n02. Split dataset into a train/test\n")
+  println("\n03. Split datasets into a features/target\n")
+
+  val (train_X, train_y) = ds.getFeaturesAndTarget(train)
+  println("      train_X: " + train_X.cols + " x " + train_X.rows)
+  println("      train_y: " + train_y.stride + " x " + train_y.length )
+
+  val (test_X, test_y) = ds.getFeaturesAndTarget(test)
+  println("      test_X: " + test_X.cols + " x " + test_X.rows)
+  println("      test_y: " + test_y.stride + " x " + test_y.length )
+
+  println("\n04. Linear regression\n")
+
+  val model = new LinearRegression()
+      model.fit(train_X, train_y)
+
+  //val predict = model.predict(test_X)
+
+  //println(predict.length)
 
   println("\n== Regression demo completed == ")
 }

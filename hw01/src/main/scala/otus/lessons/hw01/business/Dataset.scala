@@ -35,7 +35,6 @@ class Dataset extends IDataset{
     }
   }
 
-
   /*
   * Split the set into a training set and a test set with ratio
   * */
@@ -47,30 +46,26 @@ class Dataset extends IDataset{
 
     val dataShuffled = Random.shuffle(data)
     val (train, test) = dataShuffled.splitAt((ratio * dataShuffled.length).toInt)
+
     (train, test)
   }
 
-
   /*
-  * Converting to the DenseMatrix
+  *  Get features and target
   * */
-  override def convert(data: List[List[Double]]): DenseMatrix[Double] = {
-    DenseMatrix(data.map(x=> x.toArray):_*)
-  }
+  override def getFeaturesAndTarget(data: List[List[Double]]): (DenseMatrix[Double], DenseVector[Double]) = {
 
-  /*
-  override def getFeaturesAndTarget(data: List[List[Double]]): (DenseMatrix[Double], DenseMatrix[Double]) = {
     val matrix = DenseMatrix(data.map(x=> x.toArray):_*)
 
-    DenseVector.zeros[Double](matrix(::,0).length)
-  }
+    val features = matrix(::, 0 to (matrix.cols - 2))
+    val target = matrix(::, (matrix.cols - 1))
 
-   */
+    (features, target)
+  }
 }
 
 trait IDataset{
   def read(pathToFile: String): List[List[Double]]
   def split(data: List[List[Double]], ratio: Double, seed: Int): (List[List[Double]], List[List[Double]])
-  def convert(data: List[List[Double]]): DenseMatrix[Double]
-  //def getFeaturesAndTarget(data: List[List[Double]]): (DenseMatrix[Double], DenseMatrix[Double])
+  def getFeaturesAndTarget(data: List[List[Double]]): (DenseMatrix[Double], DenseVector[Double])
 }
