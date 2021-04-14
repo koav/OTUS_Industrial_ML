@@ -1,0 +1,1 @@
+jupyter notebook --notebook-dir "D:\src\OTUS_Industrial_ML\hw02\src\"
